@@ -16,13 +16,13 @@ public class Presenter implements MainMVP.Presenter {
 
     @Override
     public void botaoClicado(int id) {
-        Pessoa p = new Pessoa("Leonardo");
+        Pessoa p1 = new Pessoa("Leonardo");
         Pessoa p2 = new Pessoa("Roberta");
 
         switch (id){
             case R.id.button_toast1:
-                view.mostrarMensagem(p);
-                view.mostrarNomes(p);
+                view.mostrarMensagem(p1);
+                view.mostrarNomes(p1);
                 break;
             case R.id.button_toast2:
                 view.mostrarMensagem(p2);
