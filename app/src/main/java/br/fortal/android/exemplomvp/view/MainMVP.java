@@ -7,6 +7,9 @@ public interface MainMVP {
     interface View {
         void mostrarMensagem(Pessoa pessoa);
         void mostrarNomes(Pessoa pessoa);
+        void onSuccess(String mensagem);
+        void onError(String mensagem);
+        void onFailure(String mensagem);
     }
 
     interface Presenter {

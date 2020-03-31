@@ -10,17 +10,17 @@ import java.util.List;
 
 import br.fortal.android.exemplomvp.R;
 import br.fortal.android.exemplomvp.model.Pessoa;
-import br.fortal.android.exemplomvp.presenter.Presenter;
+import br.fortal.android.exemplomvp.presenter.MainPresenter;
 
 public class MainActivity extends AppCompatActivity implements MainMVP.View {
-    private Presenter presenter;
+    private MainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        presenter = new Presenter(this);
+        presenter = new MainPresenter(this);
 
         Button buttonToast1 = findViewById(R.id.button_toast1);
         Button buttonToast2 = findViewById(R.id.button_toast2);
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
             @Override
             public void onClick(View v) {
                 presenter.botaoClicado(R.id.button_toast2);
+                presenter.call();
             }
         });
     }
@@ -51,4 +52,20 @@ public class MainActivity extends AppCompatActivity implements MainMVP.View {
     public void mostrarNomes(Pessoa pessoa) {
         Toast.makeText(getApplicationContext(), pessoa.getNomes().toString(), Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onSuccess(String mensagem) {
+        Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onError(String mensagem) {
+        Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFailure(String mensagem) {
+        Toast.makeText(getApplicationContext(), mensagem, Toast.LENGTH_SHORT).show();
+    }
+
 }
